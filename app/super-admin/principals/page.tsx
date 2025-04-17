@@ -114,7 +114,7 @@ export default function PrincipalsPage() {
           </Link>
         </Card>
       ) : (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2">
           {filteredPrincipals.map((principal) => (
             <Card key={principal.id} className="p-4">
               <div className="flex items-center gap-4">
