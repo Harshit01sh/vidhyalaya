@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { DialogTitle } from "@radix-ui/react-dialog" // Import DialogTitle
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden" // Import VisuallyHidden for hiding the title visually
+import Image from "next/image"
 
 interface DashboardShellProps {
   children: ReactNode
@@ -30,8 +31,8 @@ export function DashboardShell({ children, sidebar, title }: DashboardShellProps
                 <DialogTitle>
                   <VisuallyHidden>Sheet Menu</VisuallyHidden>
                 </DialogTitle>
-                <div className="flex items-center gap-2 px-2 py-4">
-                  <GraduationCap className="h-6 w-6 ml-3" />
+                <div className="flex items-center gap-2 px-4 py-4">
+                  <Image src="/logo.png" width={35} height={35} alt="logo" />
                   <Link href="/" className="font-bold">
                     Vidhyalaya
                   </Link>
@@ -40,7 +41,7 @@ export function DashboardShell({ children, sidebar, title }: DashboardShellProps
               </SheetContent>
             </Sheet>
             <Link href="/" className="flex items-center gap-2">
-              <GraduationCap className="h-6 w-6" />
+              <Image src="/logo.png" width={35} height={35} alt="logo" />
               <span className="hidden font-bold md:inline-block">Vidhyalaya</span>
             </Link>
             <div className="ml-2 font-semibold md:text-lg md:ml-18 xl:ml-20">{title}</div>

@@ -9,6 +9,7 @@ import { useAuth } from "@/lib/auth-provider"
 import { signOut } from "firebase/auth"
 import { auth } from "@/lib/firebase"
 import { toast } from "sonner"
+import Image from "next/image";
 
 export default function AboutPage() {
   // Animation variants
@@ -38,7 +39,8 @@ export default function AboutPage() {
          <nav className="bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
+            <div className="flex items-center gap-2">
+              <Image src="/logo.png" width={50} height={50} alt="logo" />
               <Link href="/" className="text-white text-2xl font-bold">
                 Vidhayalaya
               </Link>
@@ -167,7 +169,7 @@ export default function AboutPage() {
             <motion.div variants={fadeIn} initial="hidden" animate="visible">
               <h2 className="text-4xl font-bold text-gray-900">Our Mission</h2>
               <p className="mt-4 text-gray-600 text-lg">
-                At Vidhayala, we strive to revolutionize school management by providing an intuitive, all-in-one platform that connects students, teachers, and administrators. Our goal is to simplify daily operations, enhance communication, and foster a thriving educational environment.
+                At Vidhayalaya, we strive to revolutionize school management by providing an intuitive, all-in-one platform that connects students, teachers, and administrators. Our goal is to simplify daily operations, enhance communication, and foster a thriving educational environment.
               </p>
             </motion.div>
             <motion.div
@@ -208,7 +210,7 @@ export default function AboutPage() {
                   <div className="absolute -left-3 top-1/2 transform -translate-y-1/2 w-6 h-6 bg-indigo-600 rounded-full"></div>
                   <h3 className="text-xl font-semibold text-indigo-600">2023 - The Idea</h3>
                   <p className="mt-2 text-gray-600">
-                    EduManage was born out of a vision to streamline school operations using cutting-edge technology.
+                    Vidhyalaya was born out of a vision to streamline school operations using cutting-edge technology.
                   </p>
                 </div>
               </motion.div>
@@ -248,10 +250,10 @@ export default function AboutPage() {
           </motion.h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { name: "Jane Doe", role: "Founder", img: "https://randomuser.me/api/portraits/women/1.jpg" },
-              { name: "John Smith", role: "Lead Developer", img: "https://randomuser.me/api/portraits/men/1.jpg" },
-              { name: "Emily Brown", role: "UX Designer", img: "https://randomuser.me/api/portraits/women/2.jpg" },
-              { name: "Mike Wilson", role: "Support Lead", img: "https://randomuser.me/api/portraits/men/2.jpg" },
+              { name: "Harshit Sharma", role: "Founder", img: "./../photo.jpg" },
+              { name: "Harshit Sharma", role: "Lead Developer", img: "./../photo.jpg" },
+              { name: "Harshit Sharma", role: "UX Designer", img: "./../photo.jpg" },
+              { name: "Harshit Sharma", role: "Support Lead", img: "./../photo.jpg" },
             ].map((member, index) => (
               <motion.div
                 key={index}
@@ -277,7 +279,7 @@ export default function AboutPage() {
       {/* Footer */}
       <footer className="bg-indigo-700 text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>&copy; 2025 EduManage. All rights reserved.</p>
+          <p>&copy; 2025 Vidhyalaya. All rights reserved.</p>
           <div className="mt-4 flex justify-center space-x-6">
             <Link href="/" className="hover:text-yellow-400">Home</Link>
             <Link href="/contact" className="hover:text-yellow-400">Contact</Link>

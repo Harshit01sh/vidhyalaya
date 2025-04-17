@@ -8,6 +8,7 @@ import { useAuth } from "@/lib/auth-provider"
 import { signOut } from "firebase/auth"
 import { auth } from "@/lib/firebase"
 import { toast } from "sonner"
+import Image from "next/image"
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -145,7 +146,8 @@ export default function Home() {
       <nav className="bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
+            <div className="flex items-center gap-2">
+              <Image src="/logo.png" width={35} height={35} alt="logo" />
               <Link href="/" className="text-white text-2xl font-bold">
                 Vidhyalaya
               </Link>

@@ -61,7 +61,7 @@ export default function NewTeacherPage() {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex justify-center items-center min-h-screen p-3">
       <Card className="w-full max-w-2xl">
         <form onSubmit={handleSubmit}>
           <CardHeader>

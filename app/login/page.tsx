@@ -9,12 +9,14 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { toast } from "sonner"  // Using the correct toast import
-import { GraduationCap } from "lucide-react"
+import { ArrowRight, GraduationCap } from "lucide-react"
 import Link from "next/link"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth, db } from "@/lib/firebase"
 import { doc, getDoc } from "firebase/firestore"
 import { useAuth } from "@/lib/auth-provider"
+import { signOut } from "firebase/auth"
+import Image from "next/image"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
@@ -22,6 +24,19 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
   const { setUser } = useAuth()
+
+  const { user } = useAuth()
+  
+    const handleSignOut = async () => {
+      try {
+        await signOut(auth)
+        toast.success("Signed out successfully")
+      } catch (error: any) {
+        toast.error("Error signing out", {
+          description: error.message,
+        })
+      }
+    }
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -82,12 +97,28 @@ export default function LoginPage() {
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1 text-center">
           <div className="flex justify-center mb-2">
-            <GraduationCap className="h-10 w-10" />
+            <Image src="/logo.png" width={50} height={50} alt="logo" />
           </div>
-          <CardTitle className="text-2xl">Vidhyalaya</CardTitle>
+          <CardTitle className="text-3xl">Vidhyalaya</CardTitle>
           <CardDescription>Enter your credentials to access your account</CardDescription>
         </CardHeader>
-        <form onSubmit={handleLogin}>
+        <div className="text-center text-sm text-muted-foreground mt-10">
+            {user ? (
+                  <>
+                  <div className="flex flex-col gap-5 items-center">
+                    <Link
+                      href={`/${user.role}/dashboard`}
+                      className="text-gray-300 text-xl flex items-center justify-center gap-3 hover:text-white w-52 bg-black px-3 py-2 rounded-md cursor-pointer"
+                    >
+                      Dashboard <ArrowRight width={20} height={20} />
+                    </Link>
+                    <button onClick={handleSignOut} className="text-gray-300 text-md hover:text-white bg-black px-3 py-2 rounded-md cursor-pointer">
+                      Sign Out
+                    </button>
+                    </div>
+                  </>
+                ) : (
+                  <form onSubmit={handleLogin}>
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
@@ -117,17 +148,20 @@ export default function LoginPage() {
             </div>
           </CardContent>
           <CardFooter className="flex flex-col space-y-4 mt-5">
-            <Button type="submit" className="w-full" disabled={isLoading}>
+            <Button type="submit" className="w-full cursor-pointer" disabled={isLoading}>
               {isLoading ? "Signing in..." : "Sign in"}
             </Button>
-            <div className="text-center text-sm text-muted-foreground">
-              <Link href="/" className="hover:underline">
-                Back to home
-              </Link>
-            </div>
+            <Link href="/login" className="text-gray-300 hover:text-white px-3 py-2 rounded-md">
+               Back to home   
+            </Link>
+            
           </CardFooter>
         </form>
+                )}
+            </div>
       </Card>
     </div>
   )
 }
+
+
