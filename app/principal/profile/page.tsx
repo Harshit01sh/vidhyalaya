@@ -99,10 +99,11 @@ export default function PrincipalProfile() {
   return (
     <DashboardShell sidebar={<PrincipalNav />} title="Profile">
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold">Profile</h1>
+        <h1 className="text-2xl font-bold ml-3 md:ml-2 xl:ml-0">Profile</h1>
         <UserNav />
       </div>
 
+      <div className="p-3">
       <Card>
         <CardHeader>
           <CardTitle>Principal Profile</CardTitle>
@@ -140,6 +141,7 @@ export default function PrincipalProfile() {
           </div>
         </CardContent>
       </Card>
+      </div>
     </DashboardShell>
   )
 }

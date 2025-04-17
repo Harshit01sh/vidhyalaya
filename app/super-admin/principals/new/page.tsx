@@ -61,7 +61,7 @@ export default function NewTeacherPage() {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex justify-center items-center min-h-screen p-3">
       <Card className="w-full max-w-2xl">
         <form onSubmit={handleSubmit}>
           <CardHeader>
@@ -97,11 +97,11 @@ export default function NewTeacherPage() {
               <Input id="phone" name="phone" value={formData.phone} onChange={handleChange} />
             </div>
           </CardContent>
-          <CardFooter className="flex justify-between">
-            <Button type="button" variant="outline" onClick={() => router.push("/super-admin/principals")}>
+          <CardFooter className="flex mt-5 justify-between">
+            <Button type="button" variant="outline" className="cursor-pointer" onClick={() => router.push("/super-admin/principals")}>
               Cancel
             </Button>
-            <Button type="submit" disabled={isSubmitting}>
+            <Button type="submit" className="cursor-pointer" disabled={isSubmitting}>
               {isSubmitting ? "Creating..." : "Create Teacher"}
             </Button>
           </CardFooter>
