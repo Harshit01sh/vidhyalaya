@@ -3,7 +3,8 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Users, School, BarChart, Settings, Home } from "lucide-react"
+import { Users, School, BarChart, Settings, Home, UserCircle } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 export function SuperAdminNav() {
   const pathname = usePathname()
@@ -40,12 +41,16 @@ export function SuperAdminNav() {
           Analytics
         </Button>
       </Link>
-      <Link href="/super-admin/settings">
-        <Button variant={pathname.includes("/super-admin/settings") ? "secondary" : "ghost"} className="w-full justify-start">
-          <Settings className="mr-2 h-4 w-4" />
-          Settings
-        </Button>
-      </Link>
+      <Link
+          href="/super-admin/profile"
+          className={cn(
+            "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
+            pathname === "/admin/profile" ? "bg-accent text-accent-foreground" : "transparent",
+          )}
+        >
+          <UserCircle className="h-4 w-4" />
+          <span>Profile</span>
+        </Link>
     </nav>
   )
 }

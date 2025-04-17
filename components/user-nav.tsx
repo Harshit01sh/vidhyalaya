@@ -15,7 +15,7 @@ import { useAuth } from "@/lib/auth-provider"
 import { auth } from "@/lib/firebase"
 import { signOut } from "firebase/auth"
 import { useRouter } from "next/navigation"
-import { toast } from "sonner" // Import toast from sonner
+import { toast } from "sonner"
 
 export function UserNav() {
   const { user } = useAuth()
@@ -25,9 +25,11 @@ export function UserNav() {
     try {
       await signOut(auth)
       router.push("/login")
-      toast.success("Signed out successfully") // Use success toast from sonner
+      toast.success("Signed out successfully")
     } catch (error: any) {
-      toast.error(`Error signing out: ${error.message}`) // Use error toast from sonner
+      toast.error("Error signing out", {
+        description: error.message,
+      })
     }
   }
 
@@ -42,7 +44,7 @@ export function UserNav() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" className="relative h-8 w-8 rounded-full mr-2 md:mr-1 xl:mr-0 cursor-pointer">
+        <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
             <AvatarImage src={user?.photoURL || ""} alt={user?.name || "User"} />
             <AvatarFallback>{user?.name ? getInitials(user.name) : "U"}</AvatarFallback>
@@ -58,11 +60,29 @@ export function UserNav() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem onClick={() => router.push("/profile")}>Profile</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => router.push("/settings")}>Settings</DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => {
+              if (user?.role === "admin") {
+                router.push("/admin/profile")
+              } else if (user?.role === "principal") {
+                router.push("/principal/profile")
+              } else if (user?.role === "teacher") {
+                router.push("/teacher/profile")
+              } else if (user?.role === "student") {
+                router.push("/student/profile")
+              } else if (user?.role === "super-admin") {
+                router.push("/super-admin/profile")
+              } else {
+                router.push("/profile")
+              }
+            }}
+          >
+            Profile
+          </DropdownMenuItem>
+          <DropdownMenuItem >Settings</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer" onClick={handleSignOut}>Log out</DropdownMenuItem>
+        <DropdownMenuItem onClick={handleSignOut}>Log out</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )

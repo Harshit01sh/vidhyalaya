@@ -3,7 +3,8 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Home, ClipboardCheck, BookOpen, FileText, Calendar, Bell, Settings, Clock, BadgePercent, DollarSign } from "lucide-react"
+import { Home, ClipboardCheck, BookOpen, FileText, Calendar, Bell, Settings, Clock, BadgePercent, DollarSign, UserCircle } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 export function StudentNav() {
   const pathname = usePathname()
@@ -85,15 +86,16 @@ export function StudentNav() {
           Announcements
         </Button>
       </Link>
-      <Link href="/student/settings" className="ml-5">
-        <Button
-          variant={pathname.includes("/student/settings") ? "secondary" : "ghost"}
-          className="w-full justify-start cursor-pointer"
+      <Link
+          href="/student/profile"
+          className={cn(
+            "flex items-center gap-3 rounded-lg px-8 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground cursor-pointer",
+            pathname === "/student/profile" ? "bg-accent text-accent-foreground" : "transparent",
+          )}
         >
-          <Settings className="mr-2 h-4 w-4" />
-          Settings
-        </Button>
-      </Link>
+          <UserCircle className="h-4 w-4" />
+          <span>Profile</span>
+        </Link>
     </nav>
   )
 }

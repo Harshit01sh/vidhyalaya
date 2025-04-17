@@ -3,7 +3,8 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Home, Users, GraduationCap, Calendar, FileText, Bell, Settings, BookOpen, UserRoundPen, Clock, BadgePercent, DollarSign } from "lucide-react"
+import { Home, Users, GraduationCap, Calendar, FileText, Bell, Settings, BookOpen, UserRoundPen, Clock, BadgePercent, DollarSign, UserCircle } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 export function AdminNav() {
   const pathname = usePathname()
@@ -70,15 +71,17 @@ export function AdminNav() {
           Announcements
         </Button>
       </Link>
-      <Link href="/admin/settings">
-        <Button
-          variant={pathname.includes("/admin/settings") ? "secondary" : "ghost"}
-          className="w-full justify-start cursor-pointer"
+      <Link
+          href="/admin/profile"
+          className={cn(
+            "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
+            pathname === "/admin/profile" ? "bg-accent text-accent-foreground" : "transparent",
+          )}
         >
-          <Settings className="mr-2 h-4 w-4" />
-          Settings
-        </Button>
-      </Link>
+          <UserCircle className="h-4 w-4" />
+          <span>Profile</span>
+        </Link>
+      
     </nav>
   )
 }

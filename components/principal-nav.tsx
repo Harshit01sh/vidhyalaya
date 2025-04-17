@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Home, Users, GraduationCap, Calendar, FileText, Bell, Settings, BookOpen, UserRoundPen, Clock, BadgePercent, ShieldUser, DollarSign } from "lucide-react"
+import { Home, Users, GraduationCap, Calendar, FileText, Bell, Settings, BookOpen, UserRoundPen, Clock, BadgePercent, ShieldUser, DollarSign, UserCircle } from "lucide-react"
 
 export function PrincipalNav() {
   const pathname = usePathname()
@@ -112,13 +112,13 @@ export function PrincipalNav() {
           Announcements
         </Button>
       </Link>
-      <Link href="/principal/settings">
+      <Link href="/principal/profile">
         <Button
-          variant={pathname.includes("/principal/settings") ? "secondary" : "ghost"}
+          variant={pathname.includes("/principal/profile") ? "secondary" : "ghost"}
           className="w-full justify-start cursor-pointer"
         >
-          <Settings className="mr-2 h-4 w-4" />
-          Settings
+          <UserCircle className="mr-2 h-4 w-4" />
+          Profile
         </Button>
       </Link>
     </nav>
