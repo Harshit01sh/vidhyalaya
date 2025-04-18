@@ -98,10 +98,7 @@ export default function StudentHomeworkPage() {
 
   return (
     <DashboardShell sidebar={<StudentNav />} title="Homework">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-2 xl:ml-0">My Homework</h1>
-        <UserNav />
-      </div>
+      
 
       <Tabs defaultValue="active" className="space-y-6">
         <TabsList className="ml-3 md:ml-2 xl:ml-0">

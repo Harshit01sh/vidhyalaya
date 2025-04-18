@@ -403,12 +403,8 @@ export default function TeacherDashboard() {
 
   return (
     <DashboardShell sidebar={<TeacherNav />} title="Teacher Dashboard">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Dashboard</h1>
-        <UserNav />
-      </div>
 
-      <div className="grid gap-4 p-3 md:grid-cols-2 lg:grid-cols-4 mb-6">
+      <div className="grid gap-4 p-3 md:p-2 xl:p-0 md:grid-cols-2 lg:grid-cols-4 mb-6">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Students</CardTitle>

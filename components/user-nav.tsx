@@ -43,7 +43,7 @@ export function UserNav() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="mr-3" asChild>
+      <DropdownMenuTrigger className="mr-3 cursor-pointer" asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
             <AvatarImage src={user?.photoURL || ""} alt={user?.name || "User"} />
@@ -60,7 +60,7 @@ export function UserNav() {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem
+          <DropdownMenuItem className="cursor-pointer"
             onClick={() => {
               if (user?.role === "admin") {
                 router.push("/admin/profile")

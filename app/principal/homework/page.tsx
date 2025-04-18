@@ -122,12 +122,9 @@ export default function PrincipalHomeworkPage() {
 
   return (
     <DashboardShell sidebar={<PrincipalNav />} title="Homework">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Homework Management</h1>
-        <UserNav />
-      </div>
+      
 
-      <div className="flex flex-col p-3 md:flex-row items-start md:items-center justify-between gap-4 mb-6">
+      <div className="flex flex-col p-3 md:p-2 xl:p-0 md:flex-row items-start md:items-center justify-between gap-4 mb-6">
         <div>
           <h2 className="text-lg font-medium">All Homework</h2>
           <p className="text-sm text-muted-foreground">View homework assignments by class</p>
@@ -152,7 +149,7 @@ export default function PrincipalHomeworkPage() {
       {isLoading ? (
         <div className="flex justify-center p-8">Loading homework...</div>
       ) : filteredHomework.length === 0 ? (
-        <div className="p-3">
+        <div className="p-3 md:p-2 xl:p-0">
         <Card className="flex flex-col items-center justify-center p-8 text-center">
           <BookOpen className="h-12 w-12 text-muted-foreground mb-4" />
           <p className="mb-2 text-muted-foreground">No homework assignments found</p>
@@ -162,7 +159,7 @@ export default function PrincipalHomeworkPage() {
         </Card>
         </div>
       ) : (
-        <div className="grid gap-6 p-3 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 p-3 md:p-2 xl:p-0 md:grid-cols-2 lg:grid-cols-3">
           {filteredHomework.map((hw) => (
             <Card key={hw.id} className="overflow-hidden flex flex-col bg-orange-200">
               <CardHeader className="pb-3">

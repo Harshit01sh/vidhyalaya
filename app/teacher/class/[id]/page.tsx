@@ -265,7 +265,7 @@ export default function ClassDetailsPage({ params: paramsPromise }: { params: Pr
             {className} - {subject}
           </h1>
         </div>
-        <UserNav />
+       
       </div>
 
       {isLoading ? (
@@ -273,13 +273,13 @@ export default function ClassDetailsPage({ params: paramsPromise }: { params: Pr
           <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
         </div>
       ) : (
-        <Tabs defaultValue="homework" className="p-3" value={activeTab} onValueChange={setActiveTab}>
+        <Tabs defaultValue="homework" className="p-3 md:p-2 xl:p-0" value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="mb-6">
             <TabsTrigger value="homework" className="cursor-pointer">Assign Homework</TabsTrigger>
             <TabsTrigger value="marks" className="cursor-pointer">Enter Marks</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="homework" className="p-3">
+          <TabsContent value="homework" className="p-3 md:p-2 xl:p-0">
             <Card>
               <CardHeader>
                 <CardTitle>Assign Homework</CardTitle>

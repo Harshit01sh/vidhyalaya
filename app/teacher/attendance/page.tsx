@@ -156,10 +156,7 @@ export default function AttendancePage() {
 
   return (
     <DashboardShell sidebar={<TeacherNav />} title="Attendance">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Attendance Management</h1>
-        <UserNav />
-      </div>
+      
 
       {!user.classSectionId ? (
         <Card>
@@ -174,10 +171,10 @@ export default function AttendancePage() {
           </CardContent>
         </Card>
       ) : (
-        <Tabs defaultValue="mark" className="space-y-6 p-3">
+        <Tabs defaultValue="mark" className="space-y-6 p-3 md:p-2 xl:p-0">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="mark">Mark Attendance</TabsTrigger>
-            <TabsTrigger value="history">Attendance History</TabsTrigger>
+            <TabsTrigger value="mark" className="cursor-pointer">Mark Attendance</TabsTrigger>
+            <TabsTrigger value="history" className="cursor-pointer">Attendance History</TabsTrigger>
           </TabsList>
 
           <TabsContent value="mark" className="space-y-6">

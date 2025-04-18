@@ -147,13 +147,10 @@ export default function StudentsPage() {
 
   return (
     <DashboardShell sidebar={<TeacherNav />} title="Students">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Students</h1>
-        <UserNav />
-      </div>
+     
 
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-4">
-        <div className="flex flex-col p-3 md:flex-row gap-4 w-full md:w-auto">
+        <div className="flex flex-col p-3 md:p-2 xl:p-0 md:flex-row gap-4 w-full md:w-auto">
           <div className="relative w-full md:w-64">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
@@ -180,7 +177,7 @@ export default function StudentsPage() {
 
         </Card>
       ) : (
-        <div className="overflow-x-auto p-3">
+        <div className="overflow-x-auto p-3 md:p-2 xl:p-0">
           <table className="w-full border-collapse">
             <thead>
               <tr className="bg-muted">

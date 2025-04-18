@@ -119,10 +119,7 @@ export default function HomeworkPage() {
 
   return (
     <DashboardShell sidebar={<TeacherNav />} title="Homework">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold">Homework Management</h1>
-        <UserNav />
-      </div>
+      
 
       <div className="flex justify-between items-center mb-6">
         <div>

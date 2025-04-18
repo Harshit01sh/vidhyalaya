@@ -160,12 +160,8 @@ export default function TeacherSchedulePage() {
 
   return (
     <DashboardShell sidebar={<TeacherNav />} title="My Schedule">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">My Teaching Schedule</h1>
-        <UserNav />
-      </div>
 
-      <div className="grid gap-6 p-3 md:grid-cols-2">
+      <div className="grid gap-6 p-3 md:p-2 xl:p-0 md:grid-cols-2">
         <Card>
           <CardHeader>
             <CardTitle>Today's Classes</CardTitle>

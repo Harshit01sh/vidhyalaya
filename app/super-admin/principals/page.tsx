@@ -80,12 +80,9 @@ export default function PrincipalsPage() {
 
   return (
     <DashboardShell sidebar={<SuperAdminNav />} title="Principals">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-2 xl:ml-0">Principals</h1>
-        <UserNav />
-      </div>
+      
 
-      <div className="flex items-center justify-between mb-4 p-3 gap-3">
+      <div className="flex items-center justify-between mb-4 p-3 md:p-2 xl:p-0 gap-3">
         <div className="relative w-full max-w-sm">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
@@ -114,7 +111,7 @@ export default function PrincipalsPage() {
           </Link>
         </Card>
       ) : (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 p-3">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 p-3 md:p-2 xl:p-0">
           {filteredPrincipals.map((principal) => (
             <Card key={principal.id} className="p-4">
               <div className="flex items-center gap-4">

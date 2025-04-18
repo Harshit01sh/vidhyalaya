@@ -215,7 +215,7 @@ export default function NewSchedulePage() {
         </div>
       </div>
 
-      <div className="p-3 sm:p-0">
+      <div className="p-3 md:p-2 xl:p-0 sm:p-0">
         <Card className="mb-6">
           <CardHeader>
             <CardTitle className="text-lg sm:text-xl">Class Information</CardTitle>

@@ -67,15 +67,12 @@ export default function PrincipalDashboard() {
 
   return (
     <DashboardShell sidebar={<AdminNav />} title="Admin Dashboard">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Dashboard</h1>
-        <UserNav />
-      </div>
+     
 
-      <Tabs defaultValue="overview" className="space-y-4 p-3">
+      <Tabs defaultValue="overview" className="space-y-4 p-3 md:p-2 xl:p-0">
         <TabsList>
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="recent">Recent Activity</TabsTrigger>
+          <TabsTrigger value="overview" className="cursor-pointer">Overview</TabsTrigger>
+          <TabsTrigger value="recent" className="cursor-pointer">Recent Activity</TabsTrigger>
         </TabsList>
         <TabsContent value="overview" className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">

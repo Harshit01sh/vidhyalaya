@@ -6,6 +6,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { DialogTitle } from "@radix-ui/react-dialog" // Import DialogTitle
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden" // Import VisuallyHidden for hiding the title visually
 import Image from "next/image"
+import { UserNav } from "./user-nav"
 
 interface DashboardShellProps {
   children: ReactNode
@@ -18,7 +19,7 @@ export function DashboardShell({ children, sidebar, title }: DashboardShellProps
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-30 border-b bg-purple-200 xl:bg-blue-50">
         <div className="container flex h-16 items-center justify-between py-4 md:ml-5 xl:ml-5">
-          <div className="flex items-center gap-2 md:gap-4">
+          <div className="flex items-center justify-between gap-2 md:gap-4">
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon" className="md:hidden ml-3">
@@ -44,8 +45,9 @@ export function DashboardShell({ children, sidebar, title }: DashboardShellProps
               <Image src="/logo.png" width={35} height={35} alt="logo" />
               <span className="hidden font-bold md:inline-block">Vidhyalaya</span>
             </Link>
-            <div className="ml-2 font-semibold md:text-lg md:ml-18 xl:ml-20">{title}</div>
+              <div className="ml-2 font-semibold md:text-lg md:ml-18 xl:ml-20">{title}</div>
           </div>
+          <UserNav  />
         </div>
       </header>
       <div className="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">

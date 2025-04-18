@@ -78,10 +78,7 @@ export default function TeacherAnnouncementsPage() {
 
   return (
     <DashboardShell sidebar={<TeacherNav />} title="Announcements">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">School Announcements</h1>
-        <UserNav />
-      </div>
+     
 
       {isLoading ? (
         <div className="flex justify-center p-8">Loading announcements...</div>
@@ -92,7 +89,7 @@ export default function TeacherAnnouncementsPage() {
           <p className="text-sm text-muted-foreground">There are no announcements at this time. Check back later.</p>
         </Card>
       ) : (
-        <div className="space-y-6 p-3">
+        <div className="space-y-6 p-3 md:p-2 xl:p-0">
           {announcements.map((announcement) => (
             <Card key={announcement.id} className="overflow-hidden">
               <div className="md:flex">

@@ -63,10 +63,6 @@ export default function SuperAdminDashboard() {
 
   return (
     <DashboardShell sidebar={<SuperAdminNav />} title="Super Admin Dashboard">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-2 xl:ml-0">Dashboard</h1>
-        <UserNav />
-      </div>
 
       <Tabs defaultValue="overview" className="space-y-4">
         <TabsList className="ml-3 md:ml-2 xl:ml-0">
@@ -74,7 +70,7 @@ export default function SuperAdminDashboard() {
           <TabsTrigger value="analytics">Analytics</TabsTrigger>
         </TabsList>
         <TabsContent value="overview" className="space-y-4">
-          <div className="grid gap-4 p-3 md:grid-cols-3">
+          <div className="grid gap-4 p-3 md:p-2 xl:p-0 md:grid-cols-3">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Total Principals</CardTitle>
@@ -106,7 +102,7 @@ export default function SuperAdminDashboard() {
               </CardContent>
             </Card>
           </div>
-          <div className="grid gap-4 p-3 md:grid-cols-2 lg:grid-cols-7">
+          <div className="grid gap-4 p-3 md:p-2 xl:p-0 md:grid-cols-2 lg:grid-cols-7">
             <Card className="col-span-4">
               <CardHeader>
                 <CardTitle>Recent Activities</CardTitle>

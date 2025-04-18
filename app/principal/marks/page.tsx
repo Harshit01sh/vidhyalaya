@@ -197,17 +197,14 @@ export default function PrincipalMarksPage() {
 
   return (
     <DashboardShell sidebar={<PrincipalNav />} title="Marks Analysis">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Marks Analysis</h1>
-        <UserNav />
-      </div>
+      
 
       {isLoading ? (
-        <div className="flex justify-center p-12">
+        <div className="flex justify-center p-12 md:p-5 xl:p-0">
           <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
         </div>
       ) : (
-        <div className="grid gap-6 p-5 w-full">
+        <div className="grid gap-6 p-5 md:p-3 xl:p-0 w-full">
           <Card className="w-98 xl:w-full">
             <CardHeader>
               <CardTitle>Class Performance Overview</CardTitle>

@@ -88,7 +88,7 @@ export default function StudentAnnouncementsPage() {
     <DashboardShell sidebar={<StudentNav />} title="Announcements">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold ml-3 md:ml-2 xl:ml-0">School Announcements</h1>
-        <UserNav />
+        
       </div>
 
       {isLoading ? (

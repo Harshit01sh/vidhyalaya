@@ -138,10 +138,7 @@ export default function StudentsPage() {
 
   return (
     <DashboardShell sidebar={<AdminNav />} title="Students">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Students</h1>
-        <UserNav />
-      </div>
+      
 
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-4">
         <div className="flex flex-row md:flex-row gap-4 w-full md:w-auto ml-3">
@@ -179,7 +176,7 @@ export default function StudentsPage() {
       {isLoading ? (
         <div className="flex justify-center p-8">Loading students...</div>
       ) : filteredStudents.length === 0 ? (
-        <div className="p-3">
+        <div className="p-3 md:p-2 xl:p-0">
         <Card className="flex flex-col items-center justify-center p-8 text-center">
           <p className="mb-2 text-muted-foreground">No students found</p>
           <p className="text-sm text-muted-foreground mb-4">
@@ -191,7 +188,7 @@ export default function StudentsPage() {
         </Card>
         </div>
       ) : (
-        <div className="overflow-x-auto p-3">
+        <div className="overflow-x-auto p-3 md:p-2 xl:p-0">
           <table className="w-full border-collapse">
             <thead>
               <tr className="bg-muted">

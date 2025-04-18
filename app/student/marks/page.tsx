@@ -120,7 +120,7 @@ export default function StudentMarksPage() {
     <DashboardShell sidebar={<StudentNav />} title="My Marks">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">My Academic Performance</h1>
-        <UserNav />
+        
       </div>
 
       {isLoading ? (

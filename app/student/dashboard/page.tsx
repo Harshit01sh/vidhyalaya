@@ -253,10 +253,7 @@ export default function StudentDashboard() {
 
   return (
     <DashboardShell sidebar={<StudentNav />} title="Student Dashboard">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-2 xl:ml-0">Dashboard</h1>
-        <UserNav />
-      </div>
+      
 
       <div className="grid gap-4 p-3 md:grid-cols-2 lg:grid-cols-4 mb-6">
         <Card>

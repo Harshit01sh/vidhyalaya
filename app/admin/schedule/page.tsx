@@ -103,10 +103,7 @@ export default function SchedulePage() {
 
   return (
     <DashboardShell sidebar={<AdminNav />} title="Class Schedules">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Class Schedules</h1>
-        <UserNav />
-      </div>
+      
 
       <Tabs defaultValue="class" className="space-y-6">
         <TabsList className="grid w-full grid-cols-2">
@@ -115,7 +112,7 @@ export default function SchedulePage() {
         </TabsList>
 
         <TabsContent value="class">
-          <div className="flex items-center p-3 justify-between mb-6">
+          <div className="flex items-center p-3 md:p-2 xl:p-0 justify-between mb-6">
             <div className="w-full max-w-sm">
               <Select value={selectedClass} onValueChange={setSelectedClass}>
                 <SelectTrigger className="cursor-pointer">
@@ -142,7 +139,7 @@ export default function SchedulePage() {
           {isLoading ? (
             <div className="flex justify-center p-8">Loading schedules...</div>
           ) : filteredSchedules.length === 0 ? (
-            <div className="p-3">
+            <div className="p-3 md:p-2 xl:p-0">
             <Card className="flex flex-col items-center justify-center p-8 text-center">
               <Calendar className="h-12 w-12 text-muted-foreground mb-4" />
               <p className="mb-2 text-muted-foreground">No schedules found</p>
@@ -157,7 +154,7 @@ export default function SchedulePage() {
             </Card>
             </div>
           ) : (
-            <div className="grid gap-6 p-3 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-6 p-3 md:p-2 xl:p-0 md:grid-cols-2 lg:grid-cols-3">
               {filteredSchedules.map((schedule) => (
                 <Card key={schedule.id}>
                   <CardHeader>
@@ -189,7 +186,7 @@ export default function SchedulePage() {
           )}
         </TabsContent>
 
-        <TabsContent value="teacher" className="p-3">
+        <TabsContent value="teacher" className="p-3 md:p-2 xl:p-0">
           <Card>
             <CardHeader>
               <CardTitle>Teacher Schedules</CardTitle>

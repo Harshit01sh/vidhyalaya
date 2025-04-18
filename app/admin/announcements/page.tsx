@@ -120,12 +120,9 @@ export default function AnnouncementsPage() {
 
   return (
     <DashboardShell sidebar={<AdminNav />} title="Announcements">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Announcements</h1>
-        <UserNav />
-      </div>
+      
 
-      <div className="flex justify-between p-3 items-center mb-6">
+      <div className="flex justify-between p-3 md:p-2 xl:p-0 items-center mb-6">
         <div>
           <h2 className="text-sm md:text-md xl:text-lg font-medium ">All Announcements</h2>
           <p className="text-sm md:text-md xl:text-lg text-muted-foreground">Manage school announcements for students and teachers</p>
@@ -141,7 +138,7 @@ export default function AnnouncementsPage() {
       {isLoading ? (
         <div className="flex justify-center p-8">Loading announcements...</div>
       ) : announcements.length === 0 ? (
-        <div className="p-3">
+        <div className="p-3 md:p-2 xl:p-0">
         <Card className="flex flex-col items-center justify-center p-8 text-center">
           <Bell className="h-12 w-12 text-muted-foreground mb-4" />
           <p className="mb-2 text-muted-foreground">No announcements found</p>
@@ -154,7 +151,7 @@ export default function AnnouncementsPage() {
         </Card>
         </div>
       ) : (
-        <div className="grid gap-6 p-3 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 p-3 md:p-2 xl:p-0 md:grid-cols-2 lg:grid-cols-3">
           {announcements.map((announcement) => (
             <Card key={announcement.id} className="overflow-hidden flex flex-col">
               {announcement.imageUrl && (

@@ -130,12 +130,9 @@ export default function TeacherMarksPage() {
 
   return (
     <DashboardShell sidebar={<TeacherNav />} title="Marks">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Exam Marks</h1>
-        <UserNav />
-      </div>
+     
 
-      <div className="flex items-center justify-between p-3 mb-6">
+      <div className="flex items-center justify-between p-3 md:p-2 xl:p-0 mb-6">
         <div className="relative w-full max-w-sm">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
@@ -175,7 +172,7 @@ export default function TeacherMarksPage() {
           )}
         </div>
       ) : (
-        <div className="grid gap-6 p-3 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 p-3 md:p-2 xl:p-0md:grid-cols-2 lg:grid-cols-3">
           {filteredExams.map((exam) => (
             <Card key={exam.id} className="overflow-hidden">
               <CardHeader className="pb-2">

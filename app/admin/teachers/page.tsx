@@ -125,12 +125,9 @@ export default function TeachersPage() {
 
   return (
     <DashboardShell sidebar={<AdminNav />} title="Teachers">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-0 xl:ml-0">Teachers</h1>
-        <UserNav />
-      </div>
+     
 
-      <div className="flex items-center justify-between gap-2 mb-6 p-3">
+      <div className="flex items-center justify-between gap-2 mb-6 p-3 md:p-2 xl:p-0">
         <div className="relative w-full max-w-sm">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
