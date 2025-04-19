@@ -122,7 +122,9 @@ export default function PrincipalHomeworkPage() {
 
   return (
     <DashboardShell sidebar={<PrincipalNav />} title="Homework">
-      
+      <div className="xl:hidden flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Classwise Homework</h1>
+      </div>
 
       <div className="flex flex-col p-3 md:p-2 xl:p-0 md:flex-row items-start md:items-center justify-between gap-4 mb-6">
         <div>

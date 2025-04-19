@@ -125,6 +125,9 @@ export default function TeachersPage() {
 
   return (
     <DashboardShell sidebar={<AdminNav />} title="Teachers">
+      <div className="xl:hidden flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">All Teachers</h1>
+      </div>
      
 
       <div className="flex items-center justify-between gap-2 mb-6 p-3 md:p-2 xl:p-0">

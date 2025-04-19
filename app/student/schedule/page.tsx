@@ -109,6 +109,9 @@ export default function StudentSchedulePage() {
 
   return (
     <DashboardShell sidebar={<StudentNav />} title="Class Schedule">
+      <div className="xl:hidden flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Class Schedule</h1>
+      </div>
       
 
       <div className="mb-6 p-3">

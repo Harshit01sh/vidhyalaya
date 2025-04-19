@@ -3,12 +3,13 @@ import Link from "next/link"
 import type React from "react"
 
 import { useEffect, useState } from "react"
-import { UserIcon, CalendarIcon, School2 } from "lucide-react"
+import { UserIcon, CalendarIcon, School2, Download, Bell, CreditCard, Users, UserCog, BookOpen, Calendar, ClipboardCheck } from "lucide-react"
 import { useAuth } from "@/lib/auth-provider"
 import { signOut } from "firebase/auth"
 import { auth } from "@/lib/firebase"
 import { toast } from "sonner"
 import Image from "next/image"
+import { Button } from "@/components/ui/button"
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -271,6 +272,44 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
+      <section id="fees" className="py-24 px-4 sm:px-6 lg:px-8 relative bg-amber-600">
+        <div className="absolute z-0" />
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-8 text-white">Simplified Fee Management</h2>
+              <div className="space-y-8">
+                <div className="flex items-start gap-5">
+                  <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <CreditCard className="w-7 h-7 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-xl mb-3 text-white">Online Payments </h3>
+                    <p className="text-slate-300 leading-relaxed">Accept fees online with multiple payment options including credit cards, bank transfers, and digital wallets. comming soon</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-5">
+                  <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Bell className="w-7 h-7 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-xl mb-3 text-white">Payment Reminders</h3>
+                    <p className="text-slate-300 leading-relaxed">Automated reminders for pending payments sent directly to parents through email or SMS notifications.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="bg-gradient-to-br from-slate-900/90 to-slate-800/90 backdrop-blur-xl border border-slate-700/30 p-8 rounded-2xl shadow-lg">
+              <h3 className="text-xl font-semibold mb-8 text-white">Fee Management Dashboard</h3>
+              <div className="aspect-video bg-slate-800/70 rounded-lg border border-slate-700/50 flex items-center justify-center overflow-hidden relative">
+                <div className="absolute inset-0 bg-primary/5"></div>
+                <div className="text-white text-sm">Dashboard Preview</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Testimonials Section */}
       <section id="testimonials" className="bg-gray-800 py-16">
@@ -296,7 +335,52 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section className="py-20 px-4 bg-slate-900 text-white">
+  <h2 className="text-3xl font-bold text-center mb-12">What Our Users Say</h2>
+  <div className="max-w-6xl mx-auto grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <Testimonial
+      name="Priya Sharma"
+      title="Principal, Greenfield School"
+      quote="Vidhyalaya has transformed how we manage our school. It's intuitive and saves us hours of manual work!"
+    />
+    <Testimonial
+      name="Raj Mehta"
+      title="Admin, Little Angels High School"
+      quote="We’ve streamlined our fee collection and attendance tracking completely. Highly recommended!"
+    />
+    <Testimonial
+      name="Sneha Iyer"
+      title="Teacher, Sunrise Academy"
+      quote="As a teacher, it's so easy to mark attendance and update student progress with just a few clicks."
+    />
+  </div>
+</section>
 
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gray-800">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 z-0" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[100px] opacity-70" />
+        <div className="relative z-10 max-w-7xl mx-auto text-center">
+          <div className="w-20 h-20 bg-gray-500 rounded-full flex items-center justify-center mx-auto mb-8">
+            <Download className="w-10 h-10 text-primary" />
+          </div>
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold mb-6 text-white">Get the Mobile App</h2>
+          <p className="text-slate-300 mb-10 max-w-2xl mx-auto">
+            Access SchoolSmart on the go. Download our mobile app to manage your school from anywhere, anytime.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <a href="/vidhyalaya-app.apk" download>
+            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white text-lg px-8 py-6 h-auto">
+              Download for iOS
+            </Button>
+            </a>
+            <a href="/vidhyalaya-app.apk" download>
+            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white text-lg px-8 py-6 h-auto">
+              Download for Android
+            </Button>
+            </a>
+          </div>
+        </div>
+      </section>
       {/* Footer Section */}
       <footer className="bg-black py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
@@ -324,3 +408,22 @@ export default function Home() {
     </div>
   )
 }
+
+
+const Testimonial = ({
+  name,
+  title,
+  quote,
+}: {
+  name: string;
+  title: string;
+  quote: string;
+}) => (
+  <div className="bg-slate-800 p-6 rounded-xl shadow-md space-y-4">
+    <p className="text-slate-300 italic">“{quote}”</p>
+    <div className="pt-4 border-t border-slate-700">
+      <h4 className="text-lg font-semibold">{name}</h4>
+      <p className="text-sm text-slate-400">{title}</p>
+    </div>
+  </div>
+);

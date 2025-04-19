@@ -130,6 +130,9 @@ export default function TeacherMarksPage() {
 
   return (
     <DashboardShell sidebar={<TeacherNav />} title="Marks">
+      <div className="xl:hidden flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Marks</h1>
+      </div>
      
 
       <div className="flex items-center justify-between p-3 md:p-2 xl:p-0 mb-6">

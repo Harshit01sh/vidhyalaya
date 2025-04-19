@@ -403,6 +403,9 @@ export default function TeacherDashboard() {
 
   return (
     <DashboardShell sidebar={<TeacherNav />} title="Teacher Dashboard">
+      <div className="xl:hidden flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Dashboard</h1>
+      </div>
 
       <div className="grid gap-4 p-3 md:p-2 xl:p-0 md:grid-cols-2 lg:grid-cols-4 mb-6">
         <Card>

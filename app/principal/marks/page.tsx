@@ -197,7 +197,9 @@ export default function PrincipalMarksPage() {
 
   return (
     <DashboardShell sidebar={<PrincipalNav />} title="Marks Analysis">
-      
+      <div className="xl:hidden flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Classwise Mark</h1>
+      </div>
 
       {isLoading ? (
         <div className="flex justify-center p-12 md:p-5 xl:p-0">

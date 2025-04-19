@@ -151,7 +151,7 @@ export default function LoginPage() {
             <Button type="submit" className="w-full cursor-pointer" disabled={isLoading}>
               {isLoading ? "Signing in..." : "Sign in"}
             </Button>
-            <Link href="/login" className="text-gray-300 hover:text-white px-3 py-2 rounded-md">
+            <Link href="/" className="text-gray-300 hover:text-white px-3 py-2 rounded-md">
                Back to home   
             </Link>
             

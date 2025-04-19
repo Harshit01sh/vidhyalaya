@@ -238,7 +238,9 @@ export default function PrincipalDashboard() {
 
   return (
     <DashboardShell sidebar={<PrincipalNav />} title="Principal Dashboard">
-      
+      <div className="xl:hidden flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Dashboard</h1>
+      </div>
 
       <Tabs defaultValue="overview" className="space-y-4 p-3">
         <TabsList className="cursor-pointer">

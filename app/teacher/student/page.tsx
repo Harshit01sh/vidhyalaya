@@ -147,6 +147,9 @@ export default function StudentsPage() {
 
   return (
     <DashboardShell sidebar={<TeacherNav />} title="Students">
+      <div className="xl:hidden flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">My Class Students</h1>
+      </div>
      
 
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-4">
