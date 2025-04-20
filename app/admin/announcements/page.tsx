@@ -142,7 +142,7 @@ export default function AnnouncementsPage() {
         <div className="flex justify-center p-8">Loading announcements...</div>
       ) : announcements.length === 0 ? (
         <div className="p-3 md:p-2 xl:p-0">
-        <Card className="flex flex-col items-center justify-center p-8 text-center">
+        <Card className="flex flex-col items-center justify-center p-8 text-center bg-red-50">
           <Bell className="h-12 w-12 text-muted-foreground mb-4" />
           <p className="mb-2 text-muted-foreground">No announcements found</p>
           <p className="text-sm text-muted-foreground mb-4">
@@ -156,7 +156,7 @@ export default function AnnouncementsPage() {
       ) : (
         <div className="grid gap-6 p-3 md:p-2 xl:p-0 md:grid-cols-2 lg:grid-cols-3">
           {announcements.map((announcement) => (
-            <Card key={announcement.id} className="overflow-hidden flex flex-col">
+            <Card key={announcement.id} className="overflow-hidden flex flex-col bg-red-50">
               {announcement.imageUrl && (
                 <div className="relative h-48 w-full">
                   <Image

@@ -129,7 +129,7 @@ export default function ExamTimetablesPage() {
 
     
       <div className="p-3 md:p-2 xl:p-0">
-      <Card>
+      <Card className="bg-zinc-200">
         <CardHeader>
           <CardTitle>All Exam Timetables</CardTitle>
           <CardDescription>Manage exam timetables for all classes</CardDescription>

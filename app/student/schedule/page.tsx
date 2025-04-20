@@ -115,7 +115,7 @@ export default function StudentSchedulePage() {
       
 
       <div className="mb-6 p-3">
-        <Card>
+        <Card className="bg-green-100">
           <CardHeader>
             <CardTitle>Today's Classes</CardTitle>
             <CardDescription>Your class schedule for today</CardDescription>
@@ -157,7 +157,7 @@ export default function StudentSchedulePage() {
       </div>
 
       <div className="p-3">
-      <Card>
+      <Card className="bg-blue-50">
         <CardHeader>
           <CardTitle>Full Weekly Schedule</CardTitle>
           <CardDescription>Your complete class timetable</CardDescription>

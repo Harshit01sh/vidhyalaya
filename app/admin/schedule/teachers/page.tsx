@@ -117,7 +117,7 @@ export default function TeacherSchedulesPage() {
       {isLoading ? (
         <div className="flex justify-center p-8">Loading teachers...</div>
       ) : filteredTeachers.length === 0 ? (
-        <Card className="flex flex-col items-center justify-center p-8 text-center">
+        <Card className="flex flex-col items-center justify-center p-8 text-center bg-red-50">
           <p className="mb-2 text-muted-foreground">No teachers found</p>
           <p className="text-sm text-muted-foreground">
             {searchQuery ? "Try a different search term" : "Add teachers to view their schedules"}
@@ -126,7 +126,7 @@ export default function TeacherSchedulesPage() {
       ) : (
         <div className="grid gap-6 p-3 md:grid-cols-2 lg:grid-cols-3">
           {filteredTeachers.map((teacher) => (
-            <Card key={teacher.id}>
+            <Card key={teacher.id} className="bg-blue-50">
               <CardHeader>
                 <div className="flex items-center gap-4">
                   <Avatar className="h-10 w-10">

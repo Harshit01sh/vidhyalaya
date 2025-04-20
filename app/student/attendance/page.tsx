@@ -120,7 +120,7 @@ export default function StudentAttendancePage() {
 
       <div className="grid gap-6 p-3 md:grid-cols-2">
         <div>
-          <Card className="mb-6">
+          <Card className="mb-6 bg-zinc-200">
             <CardHeader>
               <CardTitle>Attendance Overview</CardTitle>
               <CardDescription>Your attendance statistics</CardDescription>
@@ -152,7 +152,7 @@ export default function StudentAttendancePage() {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-purple-50">
             <CardHeader>
               <CardTitle>Recent Attendance</CardTitle>
               <CardDescription>Your last 10 attendance records</CardDescription>
@@ -188,7 +188,7 @@ export default function StudentAttendancePage() {
           </Card>
         </div>
 
-        <Card>
+        <Card className="bg-orange-100">
           <CardHeader>
             <CardTitle>Attendance Calendar</CardTitle>
             <CardDescription>View your attendance by date</CardDescription>

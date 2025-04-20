@@ -403,12 +403,10 @@ export default function TeacherDashboard() {
 
   return (
     <DashboardShell sidebar={<TeacherNav />} title="Teacher Dashboard">
-      <div className="xl:hidden flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Dashboard</h1>
-      </div>
+      
 
-      <div className="grid gap-4 p-3 md:p-2 xl:p-0 md:grid-cols-2 lg:grid-cols-4 mb-6">
-        <Card>
+      <div className="grid grid-cols-2 gap-4 p-3 md:p-2 xl:p-0 md:grid-cols-2 lg:grid-cols-4 mb-6">
+        <Card className="bg-orange-200 lg:h-36">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Students</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
@@ -418,7 +416,7 @@ export default function TeacherDashboard() {
             <p className="text-xs text-muted-foreground">In your classes</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-blue-50 lg:h-36">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Attendance Records</CardTitle>
             <ClipboardCheck className="h-4 w-4 text-muted-foreground" />
@@ -428,7 +426,7 @@ export default function TeacherDashboard() {
             <p className="text-xs text-muted-foreground">Attendance sessions</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-purple-200 lg:h-36">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Homework Assigned</CardTitle>
             <BookOpen className="h-4 w-4 text-muted-foreground" />  
@@ -438,7 +436,7 @@ export default function TeacherDashboard() {
             <p className="text-xs text-muted-foreground">Active assignments</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-green-200 lg:h-36">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Exams</CardTitle>
             <FileText className="h-4 w-4 text-muted-foreground" />
@@ -450,8 +448,8 @@ export default function TeacherDashboard() {
         </Card>
       </div>
 
-      <div className="grid gap-4 p-3 md:grid-cols-2">
-        <Card>
+      <div className="grid gap-4 p-3 md:p-2 xl:p-0 md:grid-cols-2 ">
+        <Card className="bg-blue-100">
           <CardHeader>
             <CardTitle>Quick Actions</CardTitle>
             <CardDescription>Common tasks for teachers</CardDescription>
@@ -472,7 +470,7 @@ export default function TeacherDashboard() {
             </Link>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-orange-200">
           <CardHeader>
             <CardTitle>Today's Classes</CardTitle>
             <CardDescription>Your teaching schedule for today</CardDescription>

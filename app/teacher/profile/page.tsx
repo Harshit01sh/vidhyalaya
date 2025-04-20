@@ -129,7 +129,7 @@ export default function TeacherProfile() {
     <DashboardShell sidebar={<TeacherNav />} title="Profile">
 
       <div className="p-3 md:p-2 xl:p-0">
-      <Card>
+      <Card className="bg-amber-50">
         <CardHeader>
           <CardTitle>Teacher Profile</CardTitle>
           <CardDescription>View your profile information</CardDescription>

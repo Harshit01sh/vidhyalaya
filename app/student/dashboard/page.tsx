@@ -253,13 +253,11 @@ export default function StudentDashboard() {
 
   return (
     <DashboardShell sidebar={<StudentNav />} title="Student Dashboard">
-      <div className="xl:hidden flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Dashboard</h1>
-      </div>
+      
       
 
-      <div className="grid gap-4 p-3 md:grid-cols-2 lg:grid-cols-4 mb-6">
-        <Card>
+      <div className="grid grid-cols-2 gap-4 p-3 md:grid-cols-2 lg:grid-cols-4 mb-6">
+        <Card className="bg-orange-200">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Attendance</CardTitle>
             <ClipboardCheck className="h-4 w-4 text-muted-foreground" />
@@ -273,7 +271,7 @@ export default function StudentDashboard() {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-blue-100">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Homework</CardTitle>
             <BookOpen className="h-4 w-4 text-muted-foreground" />
@@ -283,7 +281,7 @@ export default function StudentDashboard() {
             <p className="text-xs text-muted-foreground">Pending assignments</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-purple-100">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Exams</CardTitle>
             <FileText className="h-4 w-4 text-muted-foreground" />
@@ -293,7 +291,7 @@ export default function StudentDashboard() {
             <p className="text-xs text-muted-foreground">Upcoming exams</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-green-100">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Announcements</CardTitle>
             <Bell className="h-4 w-4 text-muted-foreground" />
@@ -306,7 +304,7 @@ export default function StudentDashboard() {
       </div>
 
       <div className="grid p-3 gap-4 md:grid-cols-2">
-        <Card>
+        <Card className="bg-red-100">
           <CardHeader>
             <CardTitle>Today's Timetable</CardTitle>
             <CardDescription>Your classes for today</CardDescription>
@@ -346,7 +344,7 @@ export default function StudentDashboard() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-zinc-200">
           <CardHeader>
             <CardTitle>Recent Announcements</CardTitle>
             <CardDescription>Latest updates from school</CardDescription>

@@ -124,8 +124,8 @@ export default function StudentExamsPage() {
       
       </div>
 
-      <div className="p-3">
-      <div className="mb-6 p-3">
+      <div className="p-3 md:p-2 xl:p-0">
+      <div className="mb-6">
         <p className="text-sm text-muted-foreground">
           View your upcoming exams and schedules
           {studentClass && ` for ${studentClass}${studentSection ? ` - Section ${studentSection}` : ""}`}
@@ -137,8 +137,8 @@ export default function StudentExamsPage() {
           <p>Loading exam timetables...</p>
         </div>
       ) : examTimetables.length === 0 ? (
-        <div className="p-3">
-        <Card>
+        <div className="p-3 md:p-2 xl:p-0">
+        <Card className="bg-red-400">
           <CardContent className="flex flex-col items-center justify-center py-8 text-center">
             <CalendarIcon className="h-12 w-12 text-muted-foreground mb-4" />
             <h3 className="text-lg font-medium">No exam timetables found</h3>
@@ -152,7 +152,7 @@ export default function StudentExamsPage() {
         </div>
       ) : (
         examTimetables.map((timetable) => (
-          <Card key={timetable.id} className="mb-6">
+          <Card key={timetable.id} className="mb-6 bg-red-400">
             <CardHeader>
               <CardTitle>{timetable.examName}</CardTitle>
               <CardDescription>

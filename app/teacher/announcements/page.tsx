@@ -78,7 +78,7 @@ export default function TeacherAnnouncementsPage() {
 
   return (
     <DashboardShell sidebar={<TeacherNav />} title="Announcements">
-      <div className="xl:hidden flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">All Announcements</h1>
       </div>
      
@@ -86,15 +86,17 @@ export default function TeacherAnnouncementsPage() {
       {isLoading ? (
         <div className="flex justify-center p-8">Loading announcements...</div>
       ) : announcements.length === 0 ? (
-        <Card className="flex flex-col items-center justify-center p-8 text-center">
+        <div className="p-3 md:p-2 xl:p-0">
+        <Card className="flex flex-col items-center justify-center p-8 text-center bg-pink-50">
           <Bell className="h-12 w-12 text-muted-foreground mb-4" />
           <p className="mb-2 text-muted-foreground">No announcements found</p>
           <p className="text-sm text-muted-foreground">There are no announcements at this time. Check back later.</p>
         </Card>
+        </div>
       ) : (
         <div className="space-y-6 p-3 md:p-2 xl:p-0">
           {announcements.map((announcement) => (
-            <Card key={announcement.id} className="overflow-hidden">
+            <Card key={announcement.id} className="overflow-hidden bg-pink-50">
               <div className="md:flex">
                 {announcement.imageUrl && (
                   <div className="relative h-48 md:h-auto md:w-1/3">

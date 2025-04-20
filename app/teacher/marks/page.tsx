@@ -162,7 +162,8 @@ export default function TeacherMarksPage() {
           </div>
         </div>
       ) : filteredExams.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-lg border border-dashed p-12 text-center">
+        <div className="p-3 mdLp-2 xl:p-0">
+        <div className="flex flex-col items-center justify-center rounded-lg border border-dashed text-center bg-orange-50 p-12">
           <FileText className="h-12 w-12 text-muted-foreground" />
           <h3 className="mt-4 text-lg font-semibold">No exams found</h3>
           <p className="mt-2 text-sm text-muted-foreground">
@@ -174,10 +175,11 @@ export default function TeacherMarksPage() {
             </Link>
           )}
         </div>
+        </div>
       ) : (
-        <div className="grid gap-6 p-3 md:p-2 xl:p-0md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 p-3 md:p-2 xl:p-0 md:grid-cols-2 lg:grid-cols-3">
           {filteredExams.map((exam) => (
-            <Card key={exam.id} className="overflow-hidden">
+            <Card key={exam.id} className="overflow-hidden bg-orange-50">
               <CardHeader className="pb-2">
                 <div className="flex justify-between">
                   <CardTitle className="line-clamp-1">{exam.name}</CardTitle>

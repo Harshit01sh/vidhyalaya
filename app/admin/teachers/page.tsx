@@ -169,7 +169,7 @@ export default function TeachersPage() {
         </div>
       ) : (
         <div className="border rounded-md ml-2.5 md:ml-0 xl:ml-0 mr-2 ">
-          <Table>
+          <Table className="bg-blue-100">
             <TableHeader>
               <TableRow>
                 <TableHead>Name</TableHead>

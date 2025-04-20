@@ -182,7 +182,7 @@ export default function AttendancePage() {
 
           <TabsContent value="mark" className="space-y-6">
             <div className="flex flex-col md:flex-row gap-4">
-              <Card className="flex-1">
+              <Card className="flex-1 bg-green-100">
                 <CardHeader>
                   <CardTitle>Your Class</CardTitle>
                   <CardDescription>You are the class teacher for this class</CardDescription>
@@ -193,7 +193,7 @@ export default function AttendancePage() {
                 </CardContent>
               </Card>
 
-              <Card className="flex-1">
+              <Card className="flex-1 bg-purple-50">
                 <CardHeader>
                   <CardTitle>Mark Attendance</CardTitle>
                   <CardDescription>Select a date to mark or view attendance</CardDescription>
@@ -260,7 +260,7 @@ export default function AttendancePage() {
           </TabsContent>
 
           <TabsContent value="history">
-            <Card>
+            <Card className="bg-purple-50">
               <CardHeader>
                 <CardTitle>Attendance History</CardTitle>
                 <CardDescription>View and edit previously marked attendance</CardDescription>

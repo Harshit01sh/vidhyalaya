@@ -16,7 +16,7 @@ interface DashboardShellProps {
 
 export function DashboardShell({ children, sidebar, title }: DashboardShellProps) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-white">
       <header className="sticky top-0 z-30 border-b bg-purple-200 xl:bg-blue-50">
         <div className="container flex h-16 items-center justify-between py-4 md:ml-5 xl:ml-5">
           <div className="flex items-center justify-between gap-2 md:gap-4">
@@ -54,7 +54,7 @@ export function DashboardShell({ children, sidebar, title }: DashboardShellProps
         <aside className="fixed top-16 z-20 -ml-2 hidden h-[calc(100vh-4rem)] w-full shrink-0 overflow-y-auto border-r-2 md:sticky md:block">
           <div className="py-6 pr-2">{sidebar}</div>
         </aside>
-        <main className="flex w-full md:w-full flex-col overflow-hidden py-6">{children}</main>
+        <main className="flex w-full md:w-full xl:w-full bg-white flex-col overflow-hidden py-3">{children}</main>
       </div>
     </div>
   )

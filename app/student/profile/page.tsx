@@ -112,8 +112,8 @@ export default function StudentProfile() {
     <DashboardShell sidebar={<StudentNav />} title="Profile">
       
 
-      <div className="p-3">
-      <Card>
+      <div className="p-3 md:p-2 xl:p-0">
+      <Card className="bg-purple-100">
         <CardHeader>
           <CardTitle>Student Profile</CardTitle>
           <CardDescription>View your profile information</CardDescription>

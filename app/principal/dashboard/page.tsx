@@ -238,18 +238,16 @@ export default function PrincipalDashboard() {
 
   return (
     <DashboardShell sidebar={<PrincipalNav />} title="Principal Dashboard">
-      <div className="xl:hidden flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Dashboard</h1>
-      </div>
+     
 
       <Tabs defaultValue="overview" className="space-y-4 p-3">
-        <TabsList className="cursor-pointer">
+        <TabsList className="cursor-pointer hidden">
           <TabsTrigger value="overview" className="cursor-pointer">Overview</TabsTrigger>
           <TabsTrigger value="fees" className="cursor-pointer">Finance</TabsTrigger>
         </TabsList>
         <TabsContent value="overview" className="space-y-4">
           <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <Card className="bg-orange-200">
+            <Card className="bg-orange-200 lg:h-36">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Total Teachers</CardTitle>
                 <GraduationCap className="h-4 w-4 text-muted-foreground" />
@@ -259,7 +257,7 @@ export default function PrincipalDashboard() {
                 <p className="text-xs text-muted-foreground">Faculty members</p>
               </CardContent>
             </Card>
-            <Card className="bg-blue-50">
+            <Card className="bg-blue-50 lg:h-36">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Total Students</CardTitle>
                 <Users className="h-4 w-4 text-muted-foreground" />
@@ -269,7 +267,7 @@ export default function PrincipalDashboard() {
                 <p className="text-xs text-muted-foreground">Enrolled students</p>
               </CardContent>
             </Card>
-            <Card className="bg-purple-200">
+            <Card className="bg-purple-200 lg:h-36">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Total Admins</CardTitle>
                 <ShieldUser className="h-4 w-4 text-muted-foreground" />
@@ -279,7 +277,7 @@ export default function PrincipalDashboard() {
                 <p className="text-xs text-muted-foreground">Admins members</p>
               </CardContent>
             </Card>
-            <Card className="bg-green-200">
+            <Card className="bg-green-200 lg:h-36">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Announcements</CardTitle>
                 <Bell className="h-4 w-4 text-muted-foreground" />
@@ -355,10 +353,43 @@ export default function PrincipalDashboard() {
                     Create Announcement
                   </Button>
                 </Link>
+                
               </CardContent>
             </Card>
           </div>
+          <Card className="bg-amber-50">
+            <CardHeader>
+              <CardTitle>Fee Collection Overview</CardTitle>
+              <CardDescription>Monthly fee collection data</CardDescription>
+            </CardHeader>
+            <CardContent>
+              {isLoading ? (
+                <div className="flex justify-center items-center h-[400px]">
+                  <p>Loading fee data...</p>
+                </div>
+              ) : (
+                <div className="h-[400px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <BarChart data={monthlyFeeData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="month" />
+                      <YAxis />
+                      <Tooltip formatter={(value) => [`₹${value}`, "Collection Amount"]} />
+                      <Legend />
+                      <Bar dataKey="amount" name="Fee Collection" fill="#8884d8" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              )}
+              <div className="mt-6">
+                <Link href="/principal/fees">
+                  <Button>View Fee Records</Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
         </TabsContent>
+
         <TabsContent value="fees">
           <Card>
             <CardHeader>

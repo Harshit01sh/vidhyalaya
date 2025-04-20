@@ -98,7 +98,7 @@ export default function TeacherExamTimetablesPage() {
       </div>
 
       <div className="p-3 md:p-2 xl:p-0">
-      <Card>
+      <Card className="bg-green-50">
         <CardHeader>
           <CardTitle>All Exam Timetables</CardTitle>
           <CardDescription>View exam timetables for all classes</CardDescription>

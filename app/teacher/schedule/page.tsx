@@ -165,7 +165,7 @@ export default function TeacherSchedulePage() {
       </div>
 
       <div className="grid gap-6 p-3 md:p-2 xl:p-0 md:grid-cols-2">
-        <Card>
+        <Card className="bg-green-50">
           <CardHeader>
             <CardTitle>Today's Classes</CardTitle>
             <CardDescription>Your teaching schedule for today</CardDescription>
@@ -216,7 +216,7 @@ export default function TeacherSchedulePage() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-orange-50">
           <CardHeader>
             <CardTitle>Weekly Overview</CardTitle>
             <CardDescription>Summary of your weekly teaching load</CardDescription>
@@ -245,7 +245,8 @@ export default function TeacherSchedulePage() {
         </Card>
       </div>
 
-      <Card className="mt-6">
+      <div className="p-3 md:p-2 xl:p-0">
+      <Card className="mt-6 bg-blue-50">
         <CardHeader>
           <CardTitle>Full Weekly Schedule</CardTitle>
           <CardDescription>Your complete teaching timetable</CardDescription>
@@ -302,6 +303,7 @@ export default function TeacherSchedulePage() {
           )}
         </CardContent>
       </Card>
+      </div>
     </DashboardShell>
   )
 }

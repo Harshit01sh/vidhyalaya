@@ -59,7 +59,7 @@ export function StudentNav() {
           Marks
         </Button>
       </Link>
-      <Link href="/student/timetable" className="ml-5">
+      {/* <Link href="/student/timetable" className="ml-5">
         <Button
           variant={pathname.includes("/student/timetable") ? "secondary" : "ghost"}
           className="w-full justify-start cursor-pointer"
@@ -67,7 +67,7 @@ export function StudentNav() {
           <Calendar className="mr-2 h-4 w-4" />
           Timetable
         </Button>
-      </Link>
+      </Link> */}
       <Link href="/student/fees" className="ml-5">
         <Button
           variant={pathname.includes("/student/fees") ? "secondary" : "ghost"}
@@ -86,16 +86,15 @@ export function StudentNav() {
           Announcements
         </Button>
       </Link>
-      <Link
-          href="/student/profile"
-          className={cn(
-            "flex items-center gap-3 rounded-lg px-8 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground cursor-pointer",
-            pathname === "/student/profile" ? "bg-accent text-accent-foreground" : "transparent",
-          )}
+      <Link href="/student/profile" className="ml-5">
+        <Button
+          variant={pathname.includes("/student/profile") ? "secondary" : "ghost"}
+          className="w-full justify-start cursor-pointer"
         >
-          <UserCircle className="h-4 w-4" />
-          <span>Profile</span>
-        </Link>
+          <UserCircle className="mr-2 h-4 w-4" />
+          Profile
+        </Button>
+      </Link>
     </nav>
   )
 }

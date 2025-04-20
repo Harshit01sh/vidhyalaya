@@ -73,7 +73,7 @@ export default function AdminProfile() {
       
 
       <div className="p-3 md:p-2 xl:p-0">
-      <Card>
+      <Card className="bg-orange-100">
         <CardHeader>
           <CardTitle>Admin Profile</CardTitle>
           <CardDescription>View your profile information</CardDescription>

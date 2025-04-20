@@ -143,7 +143,7 @@ export default function SchedulePage() {
             <div className="flex justify-center p-8">Loading schedules...</div>
           ) : filteredSchedules.length === 0 ? (
             <div className="p-3 md:p-2 xl:p-0">
-            <Card className="flex flex-col items-center justify-center p-8 text-center">
+            <Card className="flex flex-col items-center justify-center p-8 text-center bg-green-100">
               <Calendar className="h-12 w-12 text-muted-foreground mb-4" />
               <p className="mb-2 text-muted-foreground">No schedules found</p>
               <p className="text-sm text-muted-foreground mb-4">
@@ -159,7 +159,7 @@ export default function SchedulePage() {
           ) : (
             <div className="grid gap-6 p-3 md:p-2 xl:p-0 md:grid-cols-2 lg:grid-cols-3">
               {filteredSchedules.map((schedule) => (
-                <Card key={schedule.id}>
+                <Card key={schedule.id} className="bg-green-100">
                   <CardHeader>
                     <CardTitle>{schedule.classSectionName}</CardTitle>
                     <CardDescription>Weekly Class Schedule</CardDescription>
@@ -190,7 +190,7 @@ export default function SchedulePage() {
         </TabsContent>
 
         <TabsContent value="teacher" className="p-3 md:p-2 xl:p-0">
-          <Card>
+          <Card className="bg-purple-100">
             <CardHeader>
               <CardTitle>Teacher Schedules</CardTitle>
               <CardDescription>View and manage teacher timetables</CardDescription>

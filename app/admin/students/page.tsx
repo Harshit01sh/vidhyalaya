@@ -192,7 +192,7 @@ export default function StudentsPage() {
         </div>
       ) : (
         <div className="overflow-x-auto p-3 md:p-2 xl:p-0">
-          <table className="w-full border-collapse">
+          <table className="w-full border-collapse bg-purple-100">
             <thead>
               <tr className="bg-muted">
                 <th className="p-2 text-left font-medium">Name</th>

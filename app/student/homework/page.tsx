@@ -113,17 +113,19 @@ export default function StudentHomeworkPage() {
           {isLoading ? (
             <div className="flex justify-center p-8">Loading homework...</div>
           ) : activeHomework.length === 0 ? (
-            <Card className="flex flex-col items-center justify-center p-8 text-center">
+            <div className="p-3 md:p-2 xl:p-0">
+            <Card className="flex flex-col items-center justify-center p-8 text-center bg-purple-50">
               <BookOpen className="h-12 w-12 text-muted-foreground mb-4" />
               <p className="mb-2 text-muted-foreground">No active homework</p>
               <p className="text-sm text-muted-foreground">
                 You don't have any active homework assignments at the moment.
               </p>
             </Card>
+            </div>
           ) : (
             <div className="grid gap-6 p-3 md:grid-cols-2 lg:grid-cols-3">
               {activeHomework.map((hw) => (
-                <Card key={hw.id} className="overflow-hidden flex flex-col">
+                <Card key={hw.id} className="overflow-hidden flex flex-col bg-purple-100">
                   <CardHeader className="pb-3">
                     <div className="flex justify-between items-start">
                       <CardTitle className="line-clamp-1">{hw.title}</CardTitle>
@@ -166,15 +168,17 @@ export default function StudentHomeworkPage() {
           {isLoading ? (
             <div className="flex justify-center p-8">Loading homework...</div>
           ) : pastHomework.length === 0 ? (
-            <Card className="flex flex-col items-center justify-center p-8 text-center">
+            <div className="p-3 md:p-2 xl:p-0">
+            <Card className="flex flex-col items-center justify-center p-8 text-center bg-yellow-50">
               <BookOpen className="h-12 w-12 text-muted-foreground mb-4" />
               <p className="mb-2 text-muted-foreground">No past homework</p>
               <p className="text-sm text-muted-foreground">You don't have any past homework assignments.</p>
             </Card>
+            </div>
           ) : (
             <div className="grid gap-6 p-3 md:grid-cols-2 lg:grid-cols-3">
               {pastHomework.map((hw) => (
-                <Card key={hw.id} className="overflow-hidden flex flex-col">
+                <Card key={hw.id} className="overflow-hidden flex flex-col bg-blue-100">
                   <CardHeader className="pb-3">
                     <div className="flex justify-between items-start">
                       <CardTitle className="line-clamp-1">{hw.title}</CardTitle>

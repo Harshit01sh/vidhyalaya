@@ -124,7 +124,7 @@ export default function HomeworkPage() {
       </div>
       
 
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center mb-6 p-3 md:p-2 xl:p-0">
         <div>
           <h2 className="text-lg font-medium">All Homework</h2>
           <p className="text-sm text-muted-foreground">Manage homework assignments for your classes</p>
@@ -140,7 +140,8 @@ export default function HomeworkPage() {
       {isLoading ? (
         <div className="flex justify-center p-8">Loading homework...</div>
       ) : homework.length === 0 ? (
-        <Card className="flex flex-col items-center justify-center p-8 text-center">
+        <div className="p-3 md:p-2 xl:p-0">
+        <Card className="flex flex-col items-center justify-center p-8 text-center bg-red-50">
           <BookOpen className="h-12 w-12 text-muted-foreground mb-4" />
           <p className="mb-2 text-muted-foreground">No homework assignments found</p>
           <p className="text-sm text-muted-foreground mb-4">Create your first homework assignment for your students</p>
@@ -148,10 +149,11 @@ export default function HomeworkPage() {
             <Button>Assign Homework</Button>
           </Link>
         </Card>
+        </div>
       ) : (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {homework.map((hw) => (
-            <Card key={hw.id} className="overflow-hidden flex flex-col">
+            <Card key={hw.id} className="overflow-hidden flex flex-col bg-red-50">
               <CardHeader className="pb-3">
                 <div className="flex justify-between items-start">
                   <CardTitle className="line-clamp-1">{hw.title}</CardTitle>

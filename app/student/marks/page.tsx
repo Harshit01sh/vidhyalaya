@@ -130,7 +130,7 @@ export default function StudentMarksPage() {
       ) : (
         
         <div className="p-3 flex flex-col md:flex-1/2 xl:flex-1/3 gap-6">
-          <Card>
+          <Card className="bg-blue-50">
             <CardHeader>
               <CardTitle>Subject Performance</CardTitle>
               <CardDescription>Your average performance in each subject</CardDescription>
@@ -162,7 +162,7 @@ export default function StudentMarksPage() {
           </Card>
          
           
-          <Card>
+          <Card className="bg-green-100">
             <CardHeader>
               <CardTitle>Exam Results</CardTitle>
               <CardDescription>Detailed view of all your exam results</CardDescription>
