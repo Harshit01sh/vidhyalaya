@@ -26,7 +26,7 @@ import { useRouter } from "next/navigation"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import { format, isSameDay } from "date-fns"
-import { FilterX, Search, Plus, DollarSign, Trash2, Edit } from "lucide-react"
+import { FilterX, Search, Plus, DollarSign, Trash2, Edit, CreditCard } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import {
   Dialog,
@@ -36,11 +36,9 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogFooter,
-  DialogClose,
 } from "@/components/ui/dialog"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
 import { toast } from "sonner"
 import { Separator } from "@/components/ui/separator"
 
@@ -267,7 +265,9 @@ export default function AdminFees() {
 
   const handleAddPayment = async () => {
     if (!selectedStudent || !installmentNumber || !amount || !paymentDate) {
-      toast.error("Missing information: Please fill in all required fields")
+      toast.error("Please fill in all required fields", {
+        description: "Missing information",
+      })
       return
     }
 
@@ -318,10 +318,14 @@ export default function AdminFees() {
       setPaymentDate(format(new Date(), "yyyy-MM-dd"))
       setDialogOpen(false)
 
-      toast.success(`Payment recorded: Successfully recorded payment for ${student.name}`)
+      toast.success(`Successfully recorded payment for ${student.name}`, {
+        description: "Payment recorded",
+      })
     } catch (error) {
       console.error("Error adding payment:", error)
-      toast.error("Error: Failed to record payment. Please try again.")
+      toast.error("Failed to record payment. Please try again.", {
+        description: "Error",
+      })
     } finally {
       setIsSubmitting(false)
     }
@@ -341,7 +345,9 @@ export default function AdminFees() {
 
   const handleRemoveInstallment = (index: number) => {
     if (installments.length <= 1) {
-      toast.error("Cannot remove: At least one installment is required")
+      toast.error("At least one installment is required", {
+        description: "Cannot remove",
+      })
       return
     }
 
@@ -368,12 +374,16 @@ export default function AdminFees() {
 
   const validateFeeStructure = () => {
     if (!selectedClassSection) {
-      toast.error("Missing class section: Please select a class section")
+      toast.error("Please select a class section", {
+        description: "Missing class section",
+      })
       return false
     }
 
     if (!totalFeeAmount || isNaN(Number(totalFeeAmount)) || Number(totalFeeAmount) <= 0) {
-      toast.error("Invalid total amount: Please enter a valid total fee amount")
+      toast.error("Please enter a valid total fee amount", {
+        description: "Invalid total amount",
+      })
       return false
     }
 
@@ -381,12 +391,16 @@ export default function AdminFees() {
     let totalInstallmentAmount = 0
     for (const installment of installments) {
       if (!installment.amount || isNaN(Number(installment.amount)) || Number(installment.amount) <= 0) {
-        toast.error(`Invalid installment amount: Please enter a valid amount for installment ${installment.number}`)
+        toast.error(`Please enter a valid amount for installment ${installment.number}`, {
+          description: "Invalid installment amount",
+        })
         return false
       }
 
       if (!installment.dueDate) {
-        toast.error(`Missing due date: Please select a due date for installment ${installment.number}`)
+        toast.error(`Please select a due date for installment ${installment.number}`, {
+          description: "Missing due date",
+        })
         return false
       }
 
@@ -396,7 +410,10 @@ export default function AdminFees() {
     // Check if total of installments matches total fee amount
     if (totalInstallmentAmount !== Number(totalFeeAmount)) {
       toast.error(
-        `Amount mismatch: The sum of installment amounts (₹${totalInstallmentAmount}) does not match the total fee amount (₹${totalFeeAmount})`
+        `The sum of installment amounts (₹${totalInstallmentAmount}) does not match the total fee amount (₹${totalFeeAmount})`,
+        {
+          description: "Amount mismatch",
+        },
       )
       return false
     }
@@ -463,13 +480,16 @@ export default function AdminFees() {
       setFeeStructureDialogOpen(false)
 
       toast.success(
-        editingFeeStructure
-          ? `Fee structure updated: Successfully updated fee structure for ${classSection.name}`
-          : `Fee structure created: Successfully created fee structure for ${classSection.name}`
+        `Successfully ${editingFeeStructure ? "updated" : "created"} fee structure for ${classSection.name}`,
+        {
+          description: editingFeeStructure ? "Fee structure updated" : "Fee structure created",
+        },
       )
     } catch (error) {
       console.error("Error saving fee structure:", error)
-      toast.error("Error: Failed to save fee structure. Please try again.")
+      toast.error("Failed to save fee structure. Please try again.", {
+        description: "Error",
+      })
     } finally {
       setIsSubmitting(false)
     }
@@ -479,10 +499,14 @@ export default function AdminFees() {
     try {
       await deleteDoc(doc(db, "feeStructures", id))
       setFeeStructures(feeStructures.filter((fs) => fs.id !== id))
-      toast.success("Fee structure deleted: The fee structure has been deleted successfully")
+      toast.success("The fee structure has been deleted successfully", {
+        description: "Fee structure deleted",
+      })
     } catch (error) {
       console.error("Error deleting fee structure:", error)
-      toast.error("Error: Failed to delete fee structure. Please try again.")
+      toast.error("Failed to delete fee structure. Please try again.", {
+        description: "Error",
+      })
     }
   }
 
@@ -496,7 +520,7 @@ export default function AdminFees() {
         number: inst.number,
         amount: inst.amount.toString(),
         dueDate: inst.dueDate,
-      }))
+      })),
     )
     setFeeStructureDialogOpen(true)
   }
@@ -541,19 +565,26 @@ export default function AdminFees() {
 
   return (
     <DashboardShell sidebar={<AdminNav />} title="Fee Management">
-      <div className="xl:hidden flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold ml-3 md:ml-1 xl:ml-0">Fees Report</h1>
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-bold ml-3 md:ml-2 xl:ml-0">Fee Management</h1>
+        <div className="flex items-center gap-2">
+          <Button onClick={() => router.push("/admin/fees/collect")} variant="outline" className="cursor-pointer mr-3">
+            <CreditCard className="mr-2 h-4 w-4" />
+            Collect Fees
+          </Button>
+          
+        </div>
       </div>
-      
 
+      <div className="p-3 md:p-2 xl:p-0">
       <Tabs defaultValue="dashboard" className="space-y-4">
-        <TabsList className="ml-3 md:ml-2 xl:ml-0">
-          <TabsTrigger value="dashboard" className="cursor-pointer">Dashboard</TabsTrigger>
-          <TabsTrigger value="students" className="cursor-pointer">Students</TabsTrigger>
-          <TabsTrigger value="fee-structure" className="cursor-pointer">Fee Structure</TabsTrigger>
+        <TabsList>
+          <TabsTrigger value="dashboard">Dashboard</TabsTrigger>
+          <TabsTrigger value="students">Students</TabsTrigger>
+          <TabsTrigger value="fee-structure">Fee Structure</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="dashboard" className="space-y-4 p-3 md:p-2 xl:p-0">
+        <TabsContent value="dashboard" className="space-y-4">
           <Card>
             <CardHeader>
               <CardTitle>Today's Fee Collection</CardTitle>
@@ -603,23 +634,30 @@ export default function AdminFees() {
               <CardDescription>Fee collection trends over the past months</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="h-[300px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={monthlyData}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="month" />
-                    <YAxis />
-                    <Tooltip formatter={(value) => [`₹${value}`, "Collection Amount"]} />
-                    <Legend />
-                    <Bar dataKey="amount" name="Fee Collection" fill="#8884d8" />
-                  </BarChart>
-                </ResponsiveContainer>
+              {/* Simplified chart display */}
+              <div className="space-y-4">
+                {monthlyData.map((item) => (
+                  <div key={item.month} className="flex items-center gap-4">
+                    <div className="w-24 font-medium">{item.month}</div>
+                    <div className="flex-1">
+                      <div
+                        className="bg-primary h-8 rounded-md flex items-center px-3 text-white font-medium"
+                        style={{ width: `${Math.min(100, (item.amount / 50000) * 100)}%` }}
+                      >
+                        ₹{item.amount.toLocaleString()}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+                {monthlyData.length === 0 && (
+                  <div className="text-center py-8 text-muted-foreground">No payment data available</div>
+                )}
               </div>
             </CardContent>
           </Card>
         </TabsContent>
 
-        <TabsContent value="students" className="p-3 md:p-2 xl:p-0">
+        <TabsContent value="students">
           <Card>
             <CardHeader>
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -643,148 +681,10 @@ export default function AdminFees() {
                       <FilterX className="h-4 w-4" />
                     </Button>
                   )}
-                  <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-                    <DialogTrigger asChild>
-                      <Button>
-                        <Plus className="h-4 w-4 mr-2" />
-                        Add Payment
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent>
-                      <DialogHeader>
-                        <DialogTitle>Add Fee Payment</DialogTitle>
-                        <DialogDescription>Record a new fee payment for a student</DialogDescription>
-                      </DialogHeader>
-                      <div className="grid gap-4 py-4">
-                        <div className="grid gap-2">
-                          <Label htmlFor="student">Student</Label>
-                          <Select
-                            value={selectedStudent}
-                            onValueChange={(value) => {
-                              setSelectedStudent(value)
-
-                              // Find student and their fee structure
-                              const student = allStudents.find((s) => s.id === value)
-                              if (student) {
-                                const feeStructure = getFeeStructureForStudent(student)
-                                if (feeStructure) {
-                                  // Find unpaid installments
-                                  const studentPayments = payments.filter((p) => p.studentId === student.id)
-                                  const paidInstallmentNumbers = studentPayments.map((p) => p.installmentNumber)
-
-                                  const unpaidInstallments = feeStructure.installments
-                                    .filter((inst) => !paidInstallmentNumbers.includes(inst.number))
-                                    .sort((a, b) => a.number - b.number)
-
-                                  if (unpaidInstallments.length > 0) {
-                                    // Set the first unpaid installment
-                                    setInstallmentNumber(unpaidInstallments[0].number.toString())
-                                    setAmount(unpaidInstallments[0].amount.toString())
-                                  }
-                                }
-                              }
-                            }}
-                          >
-                            <SelectTrigger id="student">
-                              <SelectValue placeholder="Select student" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {allStudents.map((student) => (
-                                <SelectItem key={student.id} value={student.id}>
-                                  {student.name} - {student.classSectionName}
-                                  {student.srNo ? ` (SR#: ${student.srNo})` : ""}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        </div>
-
-                        {selectedStudent && (
-                          <>
-                            <div className="grid gap-2">
-                              <Label htmlFor="installment">Installment</Label>
-                              <Select
-                                value={installmentNumber}
-                                onValueChange={(value) => {
-                                  setInstallmentNumber(value)
-
-                                  // Update amount based on fee structure
-                                  const student = allStudents.find((s) => s.id === selectedStudent)
-                                  if (student) {
-                                    const feeStructure = getFeeStructureForStudent(student)
-                                    if (feeStructure) {
-                                      const installment = feeStructure.installments.find(
-                                        (inst) => inst.number === Number.parseInt(value)
-                                      )
-                                      if (installment) {
-                                        setAmount(installment.amount.toString())
-                                      }
-                                    }
-                                  }
-                                }}
-                              >
-                                <SelectTrigger id="installment">
-                                  <SelectValue placeholder="Select installment" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  {(() => {
-                                    const student = allStudents.find((s) => s.id === selectedStudent)
-                                    if (!student) return null
-
-                                    const feeStructure = getFeeStructureForStudent(student)
-                                    if (!feeStructure) {
-                                      return [1, 2, 3, 4].map((num) => (
-                                        <SelectItem key={num} value={num.toString()}>
-                                          Installment {num}
-                                        </SelectItem>
-                                      ))
-                                    }
-
-                                    return feeStructure.installments.map((inst) => (
-                                      <SelectItem key={inst.number} value={inst.number.toString()}>
-                                        Installment {inst.number} (₹{inst.amount.toLocaleString()})
-                                      </SelectItem>
-                                    ))
-                                  })()}
-                                </SelectContent>
-                              </Select>
-                            </div>
-                            <div className="grid gap-2">
-                              <Label htmlFor="amount">Amount (₹)</Label>
-                              <Input
-                                id="amount"
-                                type="number"
-                                value={amount}
-                                onChange={(e) => setAmount(e.target.value)}
-                                placeholder="Enter amount"
-                              />
-                            </div>
-                          </>
-                        )}
-                        <div className="grid gap-2">
-                          <Label htmlFor="paymentDate">Payment Date</Label>
-                          <Input
-                            id="paymentDate"
-                            type="date"
-                            value={paymentDate}
-                            onChange={(e) => setPaymentDate(e.target.value)}
-                          />
-                        </div>
-                      </div>
-                      <DialogFooter>
-                        <DialogClose asChild>
-                          <Button variant="outline">Cancel</Button>
-                        </DialogClose>
-                        <Button
-                          type="submit"
-                          onClick={handleAddPayment}
-                          disabled={isSubmitting || !selectedStudent || !installmentNumber || !amount}
-                        >
-                          {isSubmitting ? "Saving..." : "Save Payment"}
-                        </Button>
-                      </DialogFooter>
-                    </DialogContent>
-                  </Dialog>
+                  <Button onClick={() => router.push("/admin/fees/collect")}>
+                    <Plus className="h-4 w-4 mr-2" />
+                    Collect Fees
+                  </Button>
                 </div>
               </div>
             </CardHeader>
@@ -831,80 +731,16 @@ export default function AdminFees() {
                             <TableCell>₹{totalPaid.toLocaleString()}</TableCell>
                             <TableCell>₹{balance.toLocaleString()}</TableCell>
                             <TableCell className="text-right">
-                              <Dialog>
-                                <DialogTrigger asChild>
-                                  <Button variant="outline" size="sm">
-                                    <DollarSign className="h-3.5 w-3.5 mr-1" />
-                                    View Payments
-                                  </Button>
-                                </DialogTrigger>
-                                <DialogContent className="max-w-sm md:max-w-md xl:max-w-3xl overflow-x-scroll">
-                                  <DialogHeader>
-                                    <DialogTitle>Fee Payments - {student.name}</DialogTitle>
-                                    <DialogDescription>
-                                      {student.classSectionName} | {student.srNo ? `SR#: ${student.srNo}` : ""}
-                                    </DialogDescription>
-                                  </DialogHeader>
-                                  <div className="py-4">
-                                    {feeStructure ? (
-                                      <Table>
-                                        <TableHeader>
-                                          <TableRow>
-                                            <TableHead>Installment</TableHead>
-                                            <TableHead>Amount</TableHead>
-                                            <TableHead>Due Date</TableHead>
-                                            <TableHead>Payment Date</TableHead>
-                                            <TableHead>Status</TableHead>
-                                          </TableRow>
-                                        </TableHeader>
-                                        <TableBody>
-                                          {feeStructure.installments.map((installment) => {
-                                            const payment = studentPayments.find(
-                                              (p) => p.installmentNumber === installment.number
-                                            )
-                                            return (
-                                              <TableRow key={installment.number}>
-                                                <TableCell>Installment {installment.number}</TableCell>
-                                                <TableCell>₹{installment.amount.toLocaleString()}</TableCell>
-                                                <TableCell>
-                                                  {format(new Date(installment.dueDate), "dd MMM yyyy")}
-                                                </TableCell>
-                                                <TableCell>
-                                                  {payment ? format(payment.paymentDate.toDate(), "dd MMM yyyy") : "-"}
-                                                </TableCell>
-                                                <TableCell>
-                                                  {payment ? (
-                                                    <span className="text-green-600 font-medium">Paid</span>
-                                                  ) : (
-                                                    <span className="text-red-600 font-medium">Pending</span>
-                                                  )}
-                                                </TableCell>
-                                              </TableRow>
-                                            )
-                                          })}
-                                        </TableBody>
-                                      </Table>
-                                    ) : (
-                                      <div className="text-center py-4">
-                                        <p>No fee structure defined for this class section.</p>
-                                      </div>
-                                    )}
-                                  </div>
-                                  <DialogFooter>
-                                    <DialogClose asChild>
-                                      <Button variant="outline">Close</Button>
-                                    </DialogClose>
-                                    <Button
-                                      onClick={() => {
-                                        setSelectedStudent(student.id)
-                                        setDialogOpen(true)
-                                      }}
-                                    >
-                                      Add Payment
-                                    </Button>
-                                  </DialogFooter>
-                                </DialogContent>
-                              </Dialog>
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                onClick={() => {
+                                  router.push(`/admin/fees/collect?student=${student.id}`)
+                                }}
+                              >
+                                <DollarSign className="h-3.5 w-3.5 mr-1" />
+                                Collect Fees
+                              </Button>
                             </TableCell>
                           </TableRow>
                         )
@@ -917,7 +753,7 @@ export default function AdminFees() {
           </Card>
         </TabsContent>
 
-        <TabsContent value="fee-structure" className="p-3 md:p-2 xl:p-0">
+        <TabsContent value="fee-structure">
           <Card>
             <CardHeader>
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -938,7 +774,7 @@ export default function AdminFees() {
                       Add Fee Structure
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="max-w-sm md:max-w-xl xl:max-w-2xl">
+                  <DialogContent className="max-w-3xl">
                     <DialogHeader>
                       <DialogTitle>{editingFeeStructure ? "Edit Fee Structure" : "Create Fee Structure"}</DialogTitle>
                       <DialogDescription>Define fee structure for a class section</DialogDescription>
@@ -1120,6 +956,7 @@ export default function AdminFees() {
           </Card>
         </TabsContent>
       </Tabs>
+      </div>
     </DashboardShell>
   )
 }
